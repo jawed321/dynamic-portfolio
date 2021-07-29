@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.6.2/animate.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/996973c893.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+:root{
+    --main-color: #d53369;
+    --blue: #0000ff;
+    --blue-dark: #18293c;
+    --orangr: #ffa500;
+    --green-yellow:#cddc39;
+    --pink-light: #ed4264;
+    --cyan-light: #0abfbc;
+    --white: #ffffff;
+    --white-alpha-40: rgba(255, 255, 255, 0.40);
+    --white-alpha-25: rgba(255, 255, 255, 0.25);
+    --backdrop-fliter-blur: blur(5px);
+
+}
+.dark-theme{
+    --main-color: #d53369;
+    --blue: #0000ff;
+    --blue-dark: #ffffff;
+    --orangr: #ffa500;
+    --green-yellow:#cddc39;
+    --pink-light: #292928;
+    --cyan-light: #434343;
+    --white: #ffffff;
+    --white-alpha-40: rgba(32, 31, 31, 0.25);
+    --white-alpha-25: rgba(32, 31, 31, 0.4);
+    --backdrop-fliter-blur: blur(5px);
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+::before,
+::after{
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom right, var(--pink-light), var(--cyan-light));
+    background-attachment: fixed;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    color: var(--blue-dark);
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-top-highlight-color: transparent;
+    padding: 5vh 15px;
+}
+body.hide-scrolling{
+    overflow-y: hidden;
+}
+body::before,
+body::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+body::before{
+    clip-path: circle(15% at left 15%);
+    background: linear-gradient(135deg, var(--cyan-light) 10%, var(--main-color) 100%);
+    opacity: 0.3;
+}
+body::after{
+    clip-path: circle(15% at right 50vh);
+    background: var(--main-color);
+    opacity: 0.6;
+    z-index: -1;
+}
+a{
+    text-decoration: none;
+}
+.main{
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+}
+img{
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+section{
+    background-color: var(--white-alpha-25);
+    border:1px solid var(--white-alpha-40);
+    min-height: 90vh;
+    border-radius: 30px;
+    backdrop-filter: var(--backdrop-fliter-blur);
+    display: none;
+}
+section.active{
+    display: block;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+section.fade-out{
+    animation: fadeOut 0.5s ease-in-out forwards;
+}
+.container{
+    padding: 0 40px;
+    width: 100%;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.align-items-center{
+    align-items: center;
+}
+/*custom scrollbar*/
+::-webkit-scrollbar{
+    width: 5px;
+}
+::-webkit-scrollbar-track{
+    background-color: var(--white);
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--main-color);
+}
+
+/*buttons*/
+.btn{
+    line-height: 1.5;
+    background-color: var(--white-alpha-25);
+    border: 1px solid var(--white-alpha-40);
+    padding: 10px 28px;
+    display: inline-block;
+    border-radius: 30px;
+    color: var(--main-color);
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    transition: color 0.3s ease;
+}
+.btn::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background-color: var(--main-color);
+    z-index: -1;
+    transition: width 0.3s ease;
+}
+.btn:hover::before{
+    width: 100%;
+}
+.btn:hover{
+    color: var(--white);
+}
+@keyframes fadeOut{
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.overlay{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    z-index: 200;
+    opacity: 0.5;
+    visibility: hidden;
+}
+.overlay.active{
+    visibility: visible;
+}
+/*Header*/
+.header{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    padding: 20px 20px 0;
+}
+.header .active{
+    position: fixed;
+    top: 35px;
+    padding: 20px 15px;
+}
+.header.active .container{
+    max-width: 1200px;
+    margin: auto;
+}
+.header .nav-toggler{
+    width: 50px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: var(--white-alpha-25);
+    border: 1px solid var(--white-alpha-40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 15px;
+    z-index: 1;
+}
+.header .icon{
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: var(--white-alpha-25);
+    border: 1px solid var(--white-alpha-40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 ;
+    z-index: 1;
+}
+.header .icon #moon{
+    color: var(--main-color);
+}
+.header .icon #sun{
+    color: var(--green-yellow);
+}
+.hidedisplay{
+    display: none;
+}
+.header .nav-toggler span{
+    height: 2px;
+    width: 24px;
+    background-color: var(--main-color);
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+.header.active .nav-toggler span{
+    background-color: transparent;
+}
+.header .nav-toggler span::before,
+.header .nav-toggler span::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-color);
+    transition: all 0.3s ease;
+}
+.header .nav-toggler span::before{
+    left: 0;
+    transform: translateY(-8px);
+}
+.header.active .nav-toggler span::before{
+    transform: rotate(45deg);
+}
+.header .nav-toggler span::after{
+    right: 0;
+    transform: translateY(8px);
+}
+.header.active .nav-toggler span::after{
+    transform: rotate(-45deg);
+}
+.header:not(.active) .nav-toggler:hover span::before,
+.header:not(.active) .nav-toggler:hover span::after{
+    width: 50%;
+}
+.header .nav{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding: 35px 15px;
+    visibility: hidden;
+}
+.header.active .nav{
+    visibility: visible;
+}
+.header .nav-inner{
+    min-height: calc(100vh - 70px);
+    background-color: var(--white-alpha-25);
+    max-width: 1200px;
+    margin: auto;
+    border: 1px solid var(--white-alpha-40);
+    backdrop-filter: var(--backdrop-fliter-blur);
+    padding: 50px 0;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+.header.active .nav-inner{
+    opacity: 1;
+}
+.header .nav-inner ul li{
+    list-style-type: none;
+    text-align: center;
+}
+.header .nav-inner ul li a{
+    font-size: 40px;
+    color: var(--blue-dark);
+    display: block;
+    font-weight: 500;
+    padding: 8px 15px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+.header .nav-inner ul li a::before{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    width: 0%;
+    background-color: var(--main-color);
+    transition: width 0.5s ease;
+}
+.header .nav-inner ul li a:hover::before{
+    width: 100%;
+}
+.header .nav-inner ul li a:hover{
+    color: var(--main-color);
+}
+.flex-end{
+    justify-content: flex-end;
+}
+.flex-space{
+    justify-content: space-between;
+}
+
+
+
+
+.home-section{
+    /* display: flex; */
+    padding: 90px 0;
+}
+h1,h2{
+    font-weight: 600;
+}
+h3,h4,h5,h6{
+    font-weight: 500;
+}
+.home-text p{
+    font-size: 25px;
+}
+.home-text h1{
+    font-size: 50px;
+    text-transform: capitalize;
+}
+.home-text h2{
+    font-size: 30px;
+    text-transform: capitalize;
+    font-weight: 300;
+    margin: 0 0 30px;
+}
+.home-text .btn{
+    margin: 0 15px 15px 0;
+}
+
+
+.home-text,
+.home-img{
+    width: 50%;
+    padding: 15px;
+    align-items: center;
+    justify-content: center;
+}
+.home-img .img-box{
+    max-width: 360px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 8px solid var(--white-alpha-25);
+    margin: auto;
+}
+.home-img .img-box{
+    width: 100%;
+    border-radius: 50%;
+    overflow:hidden;
+    min-height: 35vh !important;
+}
+
+/*section 2*/
+.section-title{
+    padding: 0 15px;
+    width: 100%;
+    text-align: center;
+}
+.sec-padding{
+    padding: 25px 0;
+}
+.section-title h2{
+    font-size: 40px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+
+}
+.type{
+    color: var(--main-color);
+    font-size: 30px;
+    font-weight: 500;
+}
+/*------About Section*/
+.about-img{
+    width: 40%;
+    padding: 0 15px;
+}
+.about-text{
+    width: 60%;
+    padding: 0 15px;
+}
+.about-text h3{
+    text-transform: capitalize;
+    font-size: 20px;
+    margin: 20px 0;
+}
+.about-img .img-box{
+    background-color: var(--white-alpha-25);
+    max-width: 380px;
+    border: 1px solid var(--white-alpha-40);
+    margin: auto;
+    border-radius: 10px;
+}
+.about-text .skills{
+    display: flex;
+    flex-wrap: wrap;
+}
+.about-text .skill-item{
+    background-color: var(--white-alpha-25);
+    border: 1px solid var(--white-alpha-40);
+    padding: 5px 15px;
+    text-transform: capitalize;
+    margin: 0 10px 10px 0;
+    border-radius: 20px;
+}
+.about-tabs{
+    margin-top: 20px;
+}
+.about-tabs .tab-item{
+    padding: 2px 0;
+    background-color: transparent;
+    border: none;
+    text-transform: capitalize;
+    display: inline-block;
+    color: var(--blue-dark);
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    margin:0 30px 0 0;
+    position: relative;
+}
+/*buttons*/
+button{
+    font-family: inherit;
+    user-select: none;
+}
+.about-tabs .tab-item:last-child{
+    margin: 0;
+}
+.about-tabs .tab-item::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 1px;
+    background-color: var(--blue-dark);
+    transition: width 0.3s ease;
+}
+.about-tabs .tab-item:hover::before{
+    width: 100%;
+}
+.about-tabs .tab-item.active{
+    color: var(--main-color);
+    opacity: 1;
+    cursor: auto;
+}
+.about-tabs .tab-item.active::before{
+    width: 100%;
+    background-color: var(--main-color);
+}
+.about-text .tab-content{
+    padding: 40px 0;
+}
+.about-text .timeline-item{
+    margin-bottom: 30px;
+    position: relative;
+    padding: 0 0 0 40px;
+}
+.about-text .timeline-item::before{
+    content: '';
+    position: absolute;
+    height: 11px;
+    width: 11px;
+    background-color: var(--main-color);
+    left: 0;
+    top: 16px;
+    border-radius: 50%;
+}
+.about-text .timeline-item:last-child{
+    margin-bottom: 0;
+}
+.about-text .timeline-item .date{
+    display: block;
+    color: var(--main-color);
+    font-weight: 400;
+    margin: 0 0 10px;
+}
+.about-text .timeline-item h4{
+    font-size: 18px;
+    text-transform: capitalize;
+    margin: 0 0 10px;
+}
+.about-text .timeline-item h4 span{
+    font-weight: 400;
+}
+.about-text .timeline{
+    position: relative;
+}
+.about-text .timeline::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 1px;
+    top: 0;
+    left: 5px;
+    background-color: var(--main-color);
+}
+
+
+.contact-form, .contact-info{
+    width: 50%;
+    padding: 0 15px;
+}
+.contact-form .input-group{
+    width: 100%;
+    margin-bottom: 30px;
+}
+.contact-form .input-control::placeholder{
+    color: var(--blue-dark);
+    opacity: 0.8;
+    font-weight: 300;
+}
+.contact-form .input-control{
+    width: 100%;
+    display: block;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: var(--white-alpha-25);
+    padding: 0 20px;
+    color: var(--blue-dark);
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+.contact-form textarea.input-control{
+    height: 120px;
+    resize: none;
+    padding-top: 15px;
+}
+.contact-info-item{
+    margin: 0 0 30px;
+    padding: 0 0 0 20px;
+}
+.contact-info-item h3{
+    font-size: 20px;
+    text-transform: capitalize;
+    margin: 0 0 5px;
+}
+.contact-info-item .social-links a{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; 
+    height: 40px;
+    width: 40px;
+    background-color: var(--white-alpha-25);
+    color: var(--main-color);
+    border-radius: 50%;
+    border: 1px solid var(--white-alpha-40);
+    margin: 6px 4px 0 0;
+    transition: all 0.3s ease;
+}
+.contact-info-item .social-links a:hover{
+    color: var(--white);
+    background-color: var(--main-color);
+}
+.section-title h2{
+    margin: 10px;
+    margin-bottom: 20px;
+}
+#row3{
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+/*Responsive*/
+@media(min-width:1100px){
+    .timeline{
+        margin-left: 110px !important;
+    }
+}
+@media(max-width:991px){
+    .container{
+        padding: 0;
+    }
+    .home-text,
+    .home-img{
+        width: 100%;
+    }
+    .home-text{
+        text-align: center;
+    }
+    .home-img{
+        order: -1;
+    }
+    .home-img .img-box{
+        max-width: 300px;
+    }
+    .home-text .btn{
+        margin: 0 7px 15px;
+    }
+}
+@media(max-width:767px){
+    .contact-form,
+    .contact-info,
+    .about-text,
+    .about-img{
+        width: 100%;
+    }
+    .contact-info{
+        order: -1;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .contact-form{
+        margin-bottom: 25px;
+    }
+    .contact-info-item{
+    padding: 0 0 0 0px;
+    }
+}
+@media(max-width:575px){
+    .header .nav-inner ul li a{
+        font-size: 30px;
+    }
+    .home-text h1{
+        font-size: 30px;
+    }
+    .home-text h2{
+        font-size: 18px;
+    }
+    .type{
+        font-size: 23px;
+    }
+}
+@media(max-width:430px){
+    .header .nav-toggler{
+        margin: 0 0;
+    }
+}
+.about-text .indiskill{
+    display: block !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+.about-text .skill-item{
+    background-color: var(--white-alpha-25);
+    border: 1px solid var(--white-alpha-40);
+    padding: 5px 15px;
+    text-transform: capitalize;
+    border-radius: 20px;
+}
+.skillbar,
+.skillpercentbar{
+    height: 5px;
+    border-radius: 20px;
+}
+.skillbar{
+    background-color: var(--white-alpha-25);
+}
+.skillpercentbar{
+    display: block;
+    background-color: var(--main-color);
+}
+.skill{
+    margin-bottom: 25px !important;
+}
+    </style>
+</head>
+
+<body>
+    <div class="overlay">
+
+    </div>
+    <div class="main" id="fullpage">
+        <header class="header">
+            <div class="conatiner">
+                <%- include ("./partials/message"); %>
+                <div class="row flex-space">
+                    <button type="button" class="icon">
+                        <span id="moon"><i class="far fa-moon"></i></span>
+                        <span id="sun" class="hidedisplay"><i class="fas fa-sun"></i></i></span>
+                    </button>
+                    <button type="button" class="nav-toggler">
+                        <span></span>
+                    </button>
+                    <nav class="nav">
+                        <div class="nav-inner">
+                            <ul>
+                                <li><a href="#home" class="nav-item link-item">Home</a></li>
+                                <li><a href="#about" class="nav-item link-item">About</a></li>
+                                <li><a href="#education" class="nav-item link-item">Education</a></li>
+                                <li><a href="#contact" class="nav-item link-item">Contact</a></li>
+                                <li><a href="<%= user._id %>/edit" class="nav-item link-item">Edit Portfolio</a></li>
+                                <li><a href="#profile" class="nav-item link-item">My Profile</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div class="section s1">
+            <section class="home-section align-items-center active" id="home">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="home-text" style="text-align: center;">
+                            <p class="animated bounceInLeft" style="animation-delay: 0.8s">Hello, I'm</p>
+                            <h1 class="animated bounceInLeft" style="animation-delay: 1.5s"><%= user.name %></h1>
+                            <h2 class="animated bounceInLeft" style="animation-delay: 2s">I'm a <span class="type"></span></h2>
+                            <a style="animation-delay: 2.3s" href="#about" class="btn link-item animated bounceInLeft">About Me</a>
+                            <a onclick="createPDF()" style="animation-delay: 2.3s" href="#" class="btn link-item animated bounceInRight">Download CV</a>
+
+                        </div>
+                        <div class="home-img">
+                            <div style="animation-delay: 0.8s" class="img-box animated bounceInRight">
+                                <img src="/images/profileimg.png" alt="">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="section s2">
+            <section class="about-section sec-padding" id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title">
+                            <h2>About me</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="about-img">
+                            <div class="img-box">
+                                <img src="/images/undraw_certificate_343v.svg" alt="abou img">
+                            </div>
+                        </div>
+                        <div class="about-text">
+                            <p id="aboutpara"><%= user.about %></p>
+                            <h3>Skills</h3>
+                            <div class="skill">
+                            <div class="indiskill">
+                                <span class="skill-item"><%= user.skill1 %></span>
+                                <span class="skill-item"><%= user.rate1 %>%</span>
+                            </div>
+                            <div class="skillbar">
+                                <span class="skillpercentbar" style="width: <%= user.rate1 %>%;"></span>
+                            </div>
+                            </div>
+                            <div class="skill">
+                                <div class="indiskill">
+                                    <span class="skill-item"><%= user.skill2 %></span>
+                                    <span class="skill-item"><%= user.rate2 %>%</span>
+                                </div>
+                                <div class="skillbar">
+                                    <span class="skillpercentbar" style="width: <%= user.rate2 %>%;"></span>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="indiskill">
+                                    <span class="skill-item"><%= user.skill3 %></span>
+                                    <span class="skill-item"><%= user.rate3 %>%</span>
+                                </div>
+                                <div class="skillbar">
+                                    <span class="skillpercentbar" style="width: <%= user.rate3 %>%;"></span>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="indiskill">
+                                    <span class="skill-item"><%= user.skill4 %></span>
+                                    <span class="skill-item"><%= user.rate4 %>%</span>
+                                </div>
+                                <div class="skillbar">
+                                    <span class="skillpercentbar" style="width: <%= user.rate4 %>%;"></span>
+                                </div>
+                            </div>
+                            <div class="skill">
+                                <div class="indiskill">
+                                    <span class="skill-item"><%= user.skill5 %></span>
+                                    <span class="skill-item"><%= user.rate5 %>%</span>
+                                </div>
+                                <div class="skillbar">
+                                    <span class="skillpercentbar" style="width: <%= user.rate5 %>%;"></span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="section s3">
+            <section class="about-section sec-padding" id="education">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title">
+                            <h2>Education</h2>
+                        </div>
+                    </div>
+                    <div class="row" id="row3">
+                        <div class="about-img">
+                            <div class="img-box">
+                                <img src="/images/undraw_education_f8ru.svg" alt="abou img">
+                            </div>
+                        </div>
+                        <div class="about-text">
+                            <div class="tab-content" id="education">
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <span class="date"><%= user.schoolyearjoin %> - <%= user.schoolyearleft %></span>
+                                        <h4>Class X</h4>
+                                        <h4><span><%= user.schoolname %></span></h4>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="date"><%= user.collegeyearjoin %> - <%= user.collegeyearleft %></span>
+                                        <h4>Class XII</h4>
+                                        <h4><span><%= user.collegename %></span></h4>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <span class="date"><%= user.universityyearjoin %> - <%= user.universityyearleft %></span>
+                                        <h4><%= user.coursename %></h4>
+                                        <h4><span><%= user.universityname %></span></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="section s5">
+            <section class="home-section align-items-center" id="profile">
+                <div class="container" style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                    <h1 style="font-size: 40px;margin: 10px;">My Profile</h1>
+                    <h3 style="margin: 10px;">Name : <%= userid.name %></h3>
+                    <h3 style="margin: 10px;">email : <%= userid.email %></h3>
+                    <h3 style="margin: 10px;">Mobile No. : <%= userid.phone %></h3>
+                    <h3 style="margin: 10px;">Course : <%= userid.course %></h3>
+                    <h3 style="margin: 10px;">Branch : <%= userid.branch %></h3>
+                    <h3 style="margin: 10px;">Year : <%= userid.year %></h3>
+                    <a href="/users/logout" class="btn" style="margin-top: 10px;">Logout</a>
+                </div>
+            </section>
+        </div>
+        <div class="section s3">
+            <section class="contact-section" id="contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title">
+                            <h2>Contact</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="contact-form">
+                            <form>
+                                <div class="row">
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Name" class="input-control" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Email" class="input-control" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <textarea placeholder="Message" class="input-control" required></textarea>
+                                    </div>
+                                    <div class="submit-btn">
+                                        <button type="submit" class="btn">Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-info-item">
+                                <h3>Email</h3>
+                                <p><%= user.emailport %></p>
+                            </div>
+                            <div class="contact-info-item">
+                                <h3>phone</h3>
+                                <p><%= user.numberport %></p>
+                            </div>
+                            <div class="contact-info-item">
+                                <h3>Follow Me</h3>
+                                <div class="social-links">
+                                    <a href="<%= user.instaport %>" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    <a href="<%= user.linkedinport %>" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                    <a href="<%= user.githubport %>" target="_blank"><i class="fab fa-github-square"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script>
+    function createPDF(){
+        var doc = new jsPDF();
+        doc.text("Name : "+"<%= user.name %>",10,10);
+        doc.text("About",100,20);
+        doc.text(document.getElementById("aboutpara").innerText, 10, 30);
+        doc.text("Key Roles : "+"<%= user.role[0].role1 %>",10,60);
+        doc.text("<%= user.role[0].role2 %>",40,70);
+        doc.text("<%= user.role[0].role3 %>",40,80);
+        doc.text("Top Technical Skills : "+"<%= user.skill1%>",10,90);
+        doc.text("<%= user.skill2 %>",65,100);
+        doc.text("<%= user.skill3 %>",65,110);
+        doc.text("<%= user.skill4 %>",65,120);
+        doc.text("<%= user.skill5 %>",65,130);
+
+
+        doc.save("<%= user.name %>.pdf");
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script type="text/javascript">
+    if("<%= user.role[0].role2 %>" != "" && "<%= user.role[0].role3 %>" != ""){
+        var typed = new Typed(".type", {
+        strings: [
+        "<%= user.role[0].role1 %>",
+        "<%= user.role[0].role2 %>",
+        "<%= user.role[0].role3 %>",
+        ],
+        typeSpeed: 50,
+        backSpeed: 50,
+        smartBackspace: false,
+        loop: true // Default value
+    });
+    }
+    else if("<%= user.role[0].role2 %>" != "" && "<%= user.role[0].role3 %>" == ""){
+        var typed = new Typed(".type", {
+        strings: [
+        "<%= user.role[0].role1 %>",
+        "<%= user.role[0].role2 %>",
+        ],
+        typeSpeed: 50,
+        backSpeed: 50,
+        smartBackspace: false,
+        loop: true // Default value
+    });
+    }
+    else if("<%= user.role[0].role2 %>" == "" && "<%= user.role[0].role3 %>" != ""){
+        var typed = new Typed(".type", {
+        strings: [
+        "<%= user.role[0].role1 %>",
+        "<%= user.role[0].role3 %>",
+        ],
+        typeSpeed: 50,
+        backSpeed: 50,
+        smartBackspace: false,
+        loop: true // Default value
+    });
+    }
+    else{
+        var typed = new Typed(".type", {
+        strings: [
+        "<%= user.role[0].role1 %>",
+        ],
+        typeSpeed: 70,
+        backSpeed: 70,
+        smartBackspace: false,
+        loop: true // Default value
+    });
+    console.log("only 1 role")
+    }
+
+  </script>
+    <script>
+        const navToggler=document.querySelector(".nav-toggler");
+navToggler.addEventListener("click", ()=>{
+    hideSection();
+    toggleNavbar();
+    document.body.classList.toggle("hide-scrolling");
+})
+function hideSection(){
+    document.querySelector("section.active").classList.toggle("fade-out")
+}
+
+
+document.addEventListener("click", (e)=>{
+    if(e.target.classList.contains("link-item") && e.target.hash !==""){
+        document.querySelector(".overlay").classList.add("active")
+        if(e.target.classList.contains("nav-item")){
+            toggleNavbar();
+        }
+        else{
+            hideSection();
+        }
+        setTimeout(()=>{
+            document.querySelector("section.active").classList.remove("active","fade-out");
+            document.querySelector(e.target.hash).classList.add("active");
+            window.scrollTo(0,0);
+            document.body.classList.remove("hide-scrolling");
+            document.querySelector(".overlay").classList.remove("active")
+        },100)
+    }
+})
+function toggleNavbar(){
+    document.querySelector(".header").classList.toggle("active")
+}
+const icontoggler=document.querySelector(".icon");
+icontoggler.addEventListener("click",()=>{
+    document.body.classList.toggle("dark-theme");
+    document.getElementById("sun").classList.toggle("hidedisplay")
+    document.getElementById("moon").classList.toggle("hidedisplay")
+})
+    </script>
+    <script src="https://kit.fontawesome.com/996973c893.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/vendors/scrolloverflow.js"
+        integrity="sha512-+DJqTZei2r0qDU75bKSfWggvHgPveNzalRB0ZxQpRhuRw9iLmQMr4Djbl+qg5xiuXPNiWXAjzXKKw4WJxUxr4g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.1.0/fullpage.min.js"
+        integrity="sha512-HqbDsHIJoZ36Csd7NMupWFxC7e7aX2qm213sX+hirN+yEx/eUNlZrTWPs1dUQDEW4fMVkerv1PfMohR1WdFFJQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        new fullpage('#fullpage', {
+            navigation: true,
+            autoScrolling: true,
+            responsiveWidth: 0,
+            parallax: true
+        }); -->
+    </script>
+</body>
+
+</html>

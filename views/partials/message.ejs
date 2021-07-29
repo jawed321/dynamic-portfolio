@@ -1,0 +1,49 @@
+<% if(typeof errors !='undefined' ) { %>
+    <% errors.forEach(function(error){ %>
+        <div class="message alert alert-dismissible alert-danger">
+            <%= error.msg %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    <% }); %>
+<% } %>
+<% if(typeof errorslog !='undefined' ) { %>
+    <% errorslog.forEach(function(error){ %>
+        <div class="message alert alert-dismissible alert-danger">
+            <%= error.msg %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    <% }); %>
+<% } %>
+<% if(success_msg != '') {%>
+    <div class="message alert alert-dismissible alert-success">
+        <%= success_msg %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+<% } %>
+<% if(success_msg1 != '') {%>
+    <div style="text-align: center; color: green; font-weight: 500;" class="message">
+        <%= success_msg1 %>
+    </div>
+<% } %>
+<% if(error_msg != '') {%>
+    <div class="message alert alert-dismissible alert-danger">
+        <%= error_msg %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+<% } %>
+<% if(error != '') {%>
+    <div class="message alert alert-dismissible alert-danger">
+        <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+<% } %>
+<script>
+const message=document.getElementsByClassName("message")
+
+setTimeout(() => {
+for(var i=0 ; i<message.length; i++){
+message[i].style.display="none";
+}
+}, 5000);
+
+</script>

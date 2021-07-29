@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login/signup</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.6.3/css/all.min.css"
+    integrity="sha512-f2MWjotY+JCWDlE0+QAshlykvZUtIm35A6RHwfYZPdxKgLJpL8B+VVxjpHJwZDsZaWdyHVhlIHoblFYGkmrbhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://bootswatch.com/5/quartz/bootstrap.min.css">
+  <style>
+    /* Hide all steps by default: */
+    .form-group {
+      display: none;
+    }
+
+    .step {
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbbbbb;
+      border: none;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .step.active {
+      opacity: 1;
+      background-color: blue !important;
+    }
+
+    /* Mark the steps that are finished and valid: */
+    .step.finish {
+      background-color: #04AA6D;
+    }
+
+    .alert.inactive {
+      display: none;
+    }
+
+    .alert.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body style="background-image: linear-gradient(to bottom right, #ed4264, #0abfbc) !important; background-size: cover; min-height: 95vh;">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-7 m-auto">
+        <div class="card card-body">
+          <h1 class="text-center mb-3">Portfolio Details</h1>
+          <div class="alert inactive alert-dismissible alert-danger">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <p class="mb-0">Fill all the required fields</p>
+          </div>
+          <%- include ("./partials/message"); %>
+          <form id="regForm" action="/users/<%= user._id %>/portfolioform" method="POST">
+            <div class="form-group">
+              <label for="role1">Enter Your Name*</label>
+              <input type="name" id="name" name="name" class="form-control required" placeholder="Enter name here"
+                required />
+              <p class="mt-2" style="text-align: center;color: pink;">Enter atleast one Domain below</p>
+              <label for="role1">Domain 1*</label>
+              <input type="name" id="role1" name="role1" class="form-control required"
+                placeholder="e.g UI/UX designer or web developer" required />
+              <label for="role2">Domain 2</label>
+              <input type="name" id="role2" name="role2" class="form-control" placeholder="domain 2" />
+              <label for="role3">Domain 3</label>
+              <input type="name" id="role3" name="role3" class="form-control" placeholder="domain 3" />
+            </div>
+            <div class="form-group">
+              <label for="about">About yourself*</label>
+              <textarea name="about" class="form-control" id="about" rows="4"
+                placeholder="write within 50-60 words"></textarea>
+              <p class="mt-2" style="text-align: center;color: pink;">Enter top 5 skills realated to domain enterd</p>
+              <label for="skill1">Skill 1*</label>
+              <input type="name" id="skill1" name="skill1" class="form-control reuired" placeholder="e.g Javascript"
+                required />
+              <label for="rate1">Rate Skill 1(between 0-100)*</label>
+              <input type="name" id="rate1" name="rate1" class="form-control required"
+                placeholder="e.g 75 (don't add % sign)" required />
+              <label for="skill1">Skill 2*</label>
+              <input type="name" id="skill2" name="skill2" class="form-control required" required />
+              <label for="rate1">Rate Skill 2(between 0-100)*</label>
+              <input type="name" id="rate2" name="rate2" class="form-control required" required />
+              <label for="skill1">Skill 3*</label>
+              <input type="name" id="skill3" name="skill3" class="form-control required" required />
+              <label for="rate1">Rate Skill 1(between 0-100)*</label>
+              <input type="name" id="rate3" name="rate3" class="form-control required" required />
+              <label for="skill1">Skill 4*</label>
+              <input type="name" id="skill4" name="skill4" class="form-control required" required />
+              <label for="rate1">Rate Skill 4(between 0-100)*</label>
+              <input type="name" id="rate4" name="rate4" class="form-control required" required />
+              <label for="skill1">Skill 5*</label>
+              <input type="name" id="skill5" name="skill5" class="form-control required" required />
+              <label for="rate1">Rate Skill 5(between 0-100)*</label>
+              <input type="name" id="rate5" name="rate5" class="form-control required" required />
+            </div>
+            <div class="form-group">
+              <h5 style="text-align: center;color: pink;">Class 10 details</h5>
+              <label for="schoolname">School where completed 10th with city name*</label>
+              <input type="name" id="schoolname" name="schoolname" class="form-control required"
+                placeholder="e.g DAV,Cuttack" />
+              <label for="schoolyearjoin">Year Joined School*</label>
+              <input type="name" id="schoolyearjoin" name="schoolyearjoin" class="form-control required"
+                placeholder="yyyy" />
+              <label for="schoolyearleft">Year passed 10th*</label>
+              <input type="name" id="schoolyearleft" name="schoolyearleft" class="form-control required"
+                placeholder="yyyy" />
+              <h5 class="mt-1" style="text-align: center;color: pink;">Class 12 details</h5>
+              <label for="collegename">college name with city name*</label>
+              <input type="name" id="collegename" name="collegename" class="form-control required"
+                placeholder="e.g Ravenshaw,Cuttack" />
+              <label for="collegeyearjoin">Year Joined College*</label>
+              <input type="name" id="collegeyearjoin" name="collegeyearjoin" class="form-control required"
+                placeholder="yyyy" />
+              <label for="collegeyearleft">Year passed 12th*</label>
+              <input type="name" id="collegeyearleft" name="collegeyearleft" class="form-control required"
+                placeholder="yyyy" />
+              <h5 class="mt-1" style="text-align: center;color: pink;">Post class 12th details</h5>
+              <label for="coursename">course name with domain*</label>
+              <input type="name" id="coursename" name="coursename" class="form-control required"
+                placeholder="e.g Btech in Information Technology" />
+              <label for="universityname">college/university name with city name*</label>
+              <input type="name" id="universityname" name="universityname" class="form-control required"
+                placeholder="e.g CET,Bhubaneswar" />
+              <label for="universityjoin">Year Joined*</label>
+              <input type="name" id="universityyearjoin" name="universityyearjoin" class="form-control required"
+                placeholder="yyyy" />
+              <label for="universityyearleft">Year passed/expected to pass *</label>
+              <input type="name" id="universityyearleft" name="universityyearleft" class="form-control required"
+                placeholder="yyyy" />
+            </div>
+            <div class="form-group">
+              <h5 style="text-align: center;color: pink;">Contact details</h5>
+              <label for="emailport">Enter Your email*</label>
+              <input type="email" id="emailport" name="emailport" class="form-control required" placeholder="Email" />
+              <label for="numberport">Enter Number with country code*</label>
+              <input type="name" id="numberport" name="numberport" class="form-control required"
+                placeholder="Phone number" />
+              <label for="linkedinport">Enter LinkedIn profile link*</label>
+              <input type="name" id="linkedinport" name="linkedinport" class="form-control required"
+                placeholder="LinkedIn profile link" />
+              <label for="githubport">Enter Github profile link*</label>
+              <input type="name" id="githubport" name="githubport" class="form-control required"
+                placeholder="Github profile link" />
+              <label for="instaport">Enter Instagram profile link*</label>
+              <input type="name" id="instaport" name="instaport" class="form-control required"
+                placeholder="Insta profile link" />
+            </div>
+        <div style="display: flex;justify-content: space-between;align-items: center;margin-top: 10px;">
+          <button type="button" class="btn btn-primary btn-block" id="prevBtn" onclick="nextPrev(-1)">previous</button>
+          <button type="button" class="btn btn-primary btn-block" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+        <div>
+          <p>* means required</p>
+        </div>
+        <div style="text-align:center;margin-top:5px;">
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+      // This function will display the specified tab of the form...
+      var x = document.getElementsByClassName("form-group");
+      x[n].style.display = "block";
+      //... and fix the Previous/Next buttons:
+      if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+      } else {
+        document.getElementById("prevBtn").style.display = "inline";
+      }
+      if (n == (x.length - 1)) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+      } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+      }
+      //... and run a function that will display the correct step indicator:
+      fixStepIndicator(n)
+    }
+    function nextPrev(n) {
+      // This function will figure out which tab to display
+      var x = document.getElementsByClassName("form-group");
+      // Exit the function if any field in the current tab is invalid:
+      if (n == 1 && !validateForm()) return false;
+      // Hide the current tab:
+      x[currentTab].style.display = "none";
+      // Increase or decrease the current tab by 1:
+      currentTab = currentTab + n;
+      // if you have reached the end of the form...
+      if (currentTab >= x.length) {
+        // ... the form gets submitted:
+        document.getElementById("regForm").submit();
+        return false;
+      }
+      // Otherwise, display the correct tab:
+      showTab(currentTab);
+    }
+    function validateForm() {
+      // This function deals with validation of the form fields
+      var x, y, i, valid = true;
+      x = document.getElementsByClassName("form-group");
+      y = x[currentTab].getElementsByClassName("required");
+
+      for (i = 0; i < y.length; i++) {
+        if (y[i].value == "") {
+
+          document.querySelector("div.alert").classList.remove("inactive")
+          document.querySelector("div.alert").classList.add("active")
+          valid = false;
+          dismissalert();
+        }
+      }
+      function dismissalert() {
+        setTimeout(() => {
+          document.querySelector("div.alert").classList.remove("active")
+          document.querySelector("div.alert").classList.add("inactive")
+        }, 3000)
+      }
+      // If the valid status is true, mark the step as finished and valid:
+      if (valid) {
+        document.getElementsByClassName("step")[currentTab].className += " finish";
+      }
+      return valid; // return the valid status
+    }
+    function fixStepIndicator(n) {
+      // This function removes the "active" class of all steps...
+      var i, x = document.getElementsByClassName("step");
+      for (i = 0; i < x.length; i++) {
+        x[i].className = x[i].className.replace(" active", "");
+      }
+      //... and adds the "active" class on the current step:
+      x[n].className += " active";
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
