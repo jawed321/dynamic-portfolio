@@ -57,7 +57,9 @@ The repository has the following permanent branches:
 
 ## Contact
 
-You can reach us at [contact details]
+You can reach us at-
+
+[<img alt="Discord" src="https://cdn.discordapp.com/attachments/878682402564751401/889109868500369418/discord.png"/>](https://discord.gg/dynatWbBaP)
 
 ## License
 
