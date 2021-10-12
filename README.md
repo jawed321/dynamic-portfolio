@@ -8,7 +8,7 @@
 
 # Dynamic-Portfolio (Web)
 
-[Dynamic Portfolio](https://github.com/jawed321/dynamic-portfolio) #description of project
+[Dynamic Portfolio](https://github.com/jawed321/dynamic-portfolio) generates a portfolio from the data given by the user . User needs to register and then fill up the Portfolio details form to generate his portfolio website. This project is made by using nodejs and mongoDB (for database) . It has a cool feature of light/dark mode and most importantly it is fully responsive. EJS is used for the frontend which is a nodejs template engine.
 
 ## Features
 
@@ -17,10 +17,10 @@
 <br/>
 <h4>The functionalities of the project shall include: </h4>
 <ul>
-<li>item1</li>
-<li>item1</li>
-<li>item1</li>
-<li>item1</li>
+<li>Dynamically generates portfolio after taking details from user.</li>
+ <li>User Authentication using jwt and by generating cookies</li>
+ <li>Fully responsive for all screen sizes</li>
+ <li>light/dark mode functionality</li>
 </ul>
 
 ## Setting up the project
@@ -34,7 +34,7 @@
 
 Our tech stack includes:
 
-<img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>  <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/> <img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/> <img alt="PHP" src="https://img.shields.io/badge/php-%23777BB4.svg?&style=for-the-badge&logo=php&logoColor=white"/>
+<img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/>  <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/> <img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/> <img alt="nodejs" src="https://img.shields.io/badge/nodejs%20-%231572B6.svg?&style=for-the-badge&logo=nodejs&logoColor=white"/> <img alt="Express" src="https://img.shields.io/badge/express-%23777BB4.svg?&style=for-the-badge&logo=express&logoColor=white"/> <img alt="MongoDB" src="https://img.shields.io/badge/mongodb%20-%23E34F26.svg?&style=for-the-badge&logo=mongodb&logoColor=white"/> 
 
 
 ## Branches
