@@ -25,9 +25,8 @@
 
 ## Setting up the project
 
-### For this project, you have to install ...setup doc here
-
-* write points
+### For this project, you have to run 
+```npm install``` and then ```node app.js``` in the terminal. Make sure to connect to your own database.
 
 
 ## TECH STACK
